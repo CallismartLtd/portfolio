@@ -46,6 +46,8 @@ class CallistusPortfolio {
         document.body.addEventListener( 'click', ( event ) => {
             const targetLink        = event.target.closest('[data-link]');
             const isInternalLink    = targetLink && targetLink.hostname === window.location.hostname;
+            let header              = document.querySelector( 'header' );
+            let navigationPanel     = header.querySelector( 'nav' );
 
             if ( isInternalLink ) {
                 event.preventDefault();                
@@ -55,7 +57,14 @@ class CallistusPortfolio {
                 let isMobile        = window.matchMedia( '(max-width: 850px)' ).matches
                 if ( isMobile && this.#loaded && clickedOnMenu ) {
                     this.toggleMenu();
-                }                
+                    
+                }
+                
+                return;              
+            }
+
+            if ( ! event.target.closest( 'header' )  && navigationPanel.classList.contains( 'vissible' ) ) {
+                this.toggleMenu();
             }
         });
         const emailElements     = document.querySelectorAll( '.email-obfuscated' );
@@ -164,6 +173,7 @@ class CallistusPortfolio {
         this.handleLocation();
         window.addEventListener( 'popstate', () => this.handleLocation() );
         this.#loaded = true;
+        
     }
 
     /**

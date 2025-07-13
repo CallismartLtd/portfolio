@@ -600,7 +600,7 @@ section#about .credentials {
     color: #FFFFFF;
 }
 
-.blog-post-item a[target]:after
+.blog-post-item a[target]:after,
 .project-item a:after {
     display: inline-block;
     content: '\f35d';
@@ -612,7 +612,7 @@ section#about .credentials {
 
 .project-item a:not([target]):after {
     display: inline-block;
-    content: '\f35a';
+    content: '\f061';
     font-family: fontAwesome;
     font-weight: 900;
     line-height: inherit;
@@ -662,7 +662,6 @@ section#about .credentials {
 }
 
 @media ( min-width: 19px ) and ( max-width: 850px ) {
-    
     header img {
         height: 2rem;
     }
@@ -702,6 +701,10 @@ section#about .credentials {
     }
     section#about .about-me p {
         max-width: 100%;
+    }
+
+    .contact-form {
+        width: 100%;
     }
 
     @media ( max-width: 730px ) {

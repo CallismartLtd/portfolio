@@ -543,6 +543,23 @@ section#about .credentials {
   background-color: #0ea5e9;
 }
 
+.email-envelop {
+    fill: #f08484;
+    animation: flickerFade 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes flickerFade {
+    0% {
+        opacity: 0.2; /* Start mostly faded out */
+    }
+    50% {
+        opacity: 1;   /* Fade in to full visibility */
+    }
+    100% {
+        opacity: 0.2; /* Fade back out (due to 'alternate', this is the same as 0%) */
+    }
+}
+
 .projects-grid,
 .blog-posts-grid {
   display: grid;

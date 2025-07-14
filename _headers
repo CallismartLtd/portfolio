@@ -1,0 +1,29 @@
+/*.js
+  Cache-Control: public, max-age=86400, immutable
+
+/*.css
+  Cache-Control: public, max-age=86400, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=604800, immutable
+
+/*.woff
+  Cache-Control: public, max-age=604800, immutable
+
+/*.ttf
+  Cache-Control: public, max-age=604800, immutable
+
+/*.png
+  Cache-Control: public, max-age=604800, immutable
+
+/*.svg
+  Cache-Control: public, max-age=604800, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=604800, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=604800, immutable
+
+/* 
+  Cache-Control: public, max-age=3600, must-revalidate

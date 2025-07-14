@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script>
     const app_vars = {
-        url: `https://callistus.callismart.com.ng/`
+        url: 'https://callistus.callismart.com.ng/'
     }
   </script>
   <script src="assets/js/scripts.js" defer></script>
@@ -348,13 +348,12 @@
             <div class="contact-form-right">
                 <h5>Send Message</h5>
                 <form action="api/ajax" class="contact--form" id="contactForm">
-                    <input type="text" name="name" id="name" autocomplete="off" placeholder="name">
-                    <input type="email" name="email" id="email" autocomplete="off" placeholder="Email">
-                    <input type="text" name="subject" id="subject" autocomplete="off" placeholder="Subject">
-                    <textarea name="message" id="message" placeholder="Please type your message..."></textarea>
+                    <input type="text" name="client_name" id="client_name" data-field-name="Your full name" autocomplete="off" placeholder="Full Name">
+                    <input type="text" name="client_email" id="client_email" data-field-name="Your email address" autocomplete="off" placeholder="Email">
+                    <input type="text" name="subject" id="subject" autocomplete="off" data-field-name="The message subject" placeholder="Subject">
+                    <textarea name="mail_body" id="mail_body" data-field-name="The message body" placeholder="Please type your message..."></textarea>
                     <button type="submit">Send</button>
                 </form>
-
             </div>
         </div>
     </section>

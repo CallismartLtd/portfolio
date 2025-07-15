@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script>
     const app_vars = {
-        url: 'https://callistus.callismart.com.ng/'
+        url: 'http://localhost/portfolio/'
     }
   </script>
   <script src="assets/js/scripts.js" defer></script>
@@ -40,7 +40,7 @@
     </nav>
   </header>
   <main id="site-content">
-    <section id="home" class="page-content">
+    <section id="home" class="page-content hidden">
         <div class="main-hero">
             <div class="texts">
                 <h4>HELLO, WORLD.</h4>
@@ -323,8 +323,8 @@
             <div class="contact-form-left">
                 <div class="phone-details">
                     <h3>You can call me directly</h3>
-                    <h2>+2348104813221</h2>
-                    <a href="tel:+2348104813221" class="button contact"><i class="fa fa-phone-volume"></i> Call Now</a>
+                    <h2 class="phone-obfuscated text">[loading...]</h2>
+                    <a href="" class="button contact phone-obfuscated link"><i class="fa fa-phone-volume"></i> Call Now</a>
                 </div>
 
                 <div class="whatsapp-details">
@@ -338,7 +338,7 @@
                 <div class="email-details">
                     <h3>Send me an Email</h3>
                     <h2 class="email-obfuscated txt">[loading...]</h2>
-                    <a href="mailto:callistus@callismart.com.ng">
+                    <a href="" class="email-obfuscated link">
                         <i class="fa fa-envelope"></i> Email Now
                     </a>
                 </div>
@@ -520,6 +520,16 @@
             </div>
         </div>
 
+    </section>
+    <section id="not-found" class="page-content hidden">
+        <div class="not-found-wrapper">
+            <h1>404</h1>
+            <h2>Page Not Found</h2>
+            <p>Sorry, the page you're looking for doesn't exist or may have been moved.</p>
+            <a href="/" class="button" data-link data-target="home">
+                <i class="fas fa-home"></i> Back to Homepage
+            </a>
+        </div>
     </section>
 
   </main>

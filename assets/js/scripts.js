@@ -68,6 +68,7 @@ class CallistusPortfolio {
             }
         });
         const emailElements     = document.querySelectorAll( '.email-obfuscated' );
+        const phoneElements     = document.querySelectorAll( '.phone-obfuscated' );
         const chatBtn           = document.querySelector( '#WhatsAppSendBtn' );
         const userWaMessage     = document.querySelector( '#WhatsAppMessageInput' );
         const contactForm       = document.querySelector( '#contactForm' );
@@ -76,26 +77,38 @@ class CallistusPortfolio {
         const user              = 'callistus';
         const domain            = 'callismart.com.ng';
         const email             = `${user}@${domain}`;
-        const whatsAppnumber    = '2348104813221';
+        const whatsAppnumber    = atob( 'MjM0ODEwNDgxMzIyMQ==' );
         const whatsAppUrl       = 'https://wa.me';
         const blogContainer     = document.getElementById('blogPostsGrid');
         const blogAPI           = 'https://callismart.com.ng/wp-json/wp/v2/posts?per_page=6&_fields=title,date,excerpt,link';
         
         menuToggle.addEventListener( 'click', () => this.toggleMenu() );
 
-        emailElements.forEach( emailElement => {
-            emailElement.setAttribute('data-email', email);
-            emailElement.setAttribute('title', email);
-
-            setTimeout(() => {
+        setTimeout(() => {
+            emailElements.forEach( emailElement => {            
+                emailElement.setAttribute( 'data-email', email );
+                emailElement.setAttribute( 'title', email );
                 if ( emailElement.classList.contains( 'txt' ) ) {
                     emailElement.innerHTML = email;
+                } else if ( emailElement.classList.contains( 'link' ) ) {
+                    emailElement.href = `mailto:${email}`;
                 } else {
                     emailElement.innerHTML = `<a href="mailto:${email}" rel="nofollow">${email}</a>`;
                 }
-                
-            }, 6000);
-        });
+            });  
+
+            phoneElements.forEach( phoneElement =>{
+       
+                if ( phoneElement.classList.contains( 'text' ) ) {
+                    phoneElement.textContent = `+${whatsAppnumber}`;
+                } else if ( phoneElement.classList.contains( 'link' ) ) {
+                    phoneElement.href = `tel:+${whatsAppnumber}`;
+                }
+            });
+        
+        }, 6000);
+
+        
 
         chatBtn.addEventListener( 'click', () =>{
             let link    = new URL( `${ whatsAppUrl}/${whatsAppnumber}` );

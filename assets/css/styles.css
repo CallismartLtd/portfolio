@@ -668,6 +668,62 @@ section#about .credentials {
     margin: 10px auto;
 }
 
+#not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: inherit; /* Matches your global dark background */
+    color: #f1f1f1;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+#not-found .not-found-wrapper {
+    max-width: 600px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#not-found h1 {
+    font-size: 6rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: #ff5555;
+    text-shadow: 0 0 8px rgba(255, 85, 85, 0.3);
+}
+
+#not-found h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+#not-found p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+#not-found .button {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    background-color: #00adb5;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+#not-found .button:hover {
+    background-color: #019ca3;
+}
+
+
 @keyframes pulse {
     0% { background-color: #2a2a2a; }
     50% { background-color: #3a3a3a; }
@@ -732,6 +788,13 @@ section#about .credentials {
         
     }
     
+    @media ( max-width: 500px ) {
+        section#about .credentials,
+        section#about .brief-journall {
+            flex-direction: column;
+        }
+    }
+    
     @media ( max-width: 375px ) {
         .timeline-vertical-line {
             display: none;
@@ -757,10 +820,13 @@ section#about .credentials {
         }
     }
 
-    @media ( max-width: 500px ) {
-        section#about .credentials,
-        section#about .brief-journall {
-            flex-direction: column;
+    @media (max-width: 360px) {
+        #not-found h1 {
+            font-size: 4rem;
+        }
+
+        #not-found h2 {
+            font-size: 1.5rem;
         }
     }
 }

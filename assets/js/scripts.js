@@ -3,7 +3,6 @@
  */
 class CallistusPortfolio {
     #baseUrl    = app_vars.url;
-    #currentUrl = window.location.href;
     #loaded     = false;
 
     /**
@@ -280,12 +279,9 @@ class CallistusPortfolio {
     }
 
     getCurrentUrl() {
-        let currentUrl      = window.location.href;
-        if ( this.#currentUrl !== currentUrl ) {
-            this.#currentUrl    = currentUrl;
-        }
-
-        return this.#currentUrl;
+        let currentUrl      = new URL( window.location.href );
+        currentUrl.search = '';
+        return currentUrl.href;
     }
     
     getQueriedPath() {        
@@ -317,6 +313,8 @@ class CallistusPortfolio {
      */
     handleLocation () {
         let path        = this.getQueriedPath().replace( '/', '' );
+        console.log(path);
+        
         let routeConfig = this.routes[path] ?? '';
         if ( ! routeConfig ) {
             routeConfig = this.routes['404'];

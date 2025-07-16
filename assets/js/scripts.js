@@ -312,9 +312,7 @@ class CallistusPortfolio {
      * 5. Updates the document title.
      */
     handleLocation () {
-        let path        = this.getQueriedPath().replace( '/', '' );
-        console.log(path);
-        
+        let path        = this.getQueriedPath().replace( '/', '' );        
         let routeConfig = this.routes[path] ?? '';
         if ( ! routeConfig ) {
             routeConfig = this.routes['404'];

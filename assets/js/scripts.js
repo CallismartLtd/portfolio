@@ -73,8 +73,8 @@ class CallistusPortfolio {
         const contactForm       = document.querySelector( '#contactForm' );
         let menuToggle          = document.querySelector( '#hamburger-toggle' );
 
-        const user              = 'callistus';
-        const domain            = 'callismart.com.ng';
+        const user              = 'callismartofficial';
+        const domain            = 'gmail.com';
         const email             = `${user}@${domain}`;
         const whatsAppnumber    = atob( 'MjM0ODEwNDgxMzIyMQ==' );
         const whatsAppUrl       = 'https://wa.me';

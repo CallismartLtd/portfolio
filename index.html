@@ -12,10 +12,11 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Full Stack WordPress Developer – Callistus Nwachukwu's personal portfolio showcasing projects, skills, and experience." />
+    <meta name="description" content="Callistus Nwachukwu – software engineer building Smart License Server and open-source PHP libraries (DBPrism, HTTP, DTO), plus WordPress and WooCommerce plugins." />
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/font-family.css" />
-    <link rel="stylesheet" href="assets/css/fontawesome/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script>
         const app_vars = {
@@ -27,43 +28,49 @@
 </head>
 <body>
   <header>
-    <h1>
-      <a href="" data-link>
-        <img src="assets/images/logo.svg" alt="Callistus Nwachukwu Logo" />
-      </a>
-    </h1>
-
-    <div id="hamburger-toggle">
-        <i class="fas fa-bars"></i>
+    <div class="titlebar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h1><a href="" data-link>callistus@callismart: ~</a></h1>
+      <div id="hamburger-toggle" role="button" tabindex="0" aria-label="Toggle menu" aria-expanded="false"><span>[≡]</span></div>
     </div>
 
     <nav role="navigation" aria-label="Main Navigation">
         <ul class="app-nav-list">
-            <li><a href="" data-link class="app-nav-btn" data-target="home">Home</a></li>
-            <li><a href="about" data-link class="app-nav-btn" data-target="about">About</a></li>
-            <li><a href="resume" data-link class="app-nav-btn" data-target="resume">Resume</a></li>
-            <li><a href="contact" data-link class="app-nav-btn" data-target="contact">Contact</a></li>
-            <li><a href="projects" data-link class="app-nav-btn" data-target="projects">Projects</a></li>
-            <li><a href="blogs" data-link class="app-nav-btn" data-target="blogs">Blogs</a></li>
+            <li><a href="" data-link class="app-nav-btn" data-target="home">~/</a></li>
+            <li><a href="about" data-link class="app-nav-btn" data-target="about">about.md</a></li>
+            <li><a href="resume" data-link class="app-nav-btn" data-target="resume">resume.md</a></li>
+            <li><a href="contact" data-link class="app-nav-btn" data-target="contact">contact.sh</a></li>
+            <li><a href="projects" data-link class="app-nav-btn" data-target="projects">projects/</a></li>
+            <li><a href="blogs" data-link class="app-nav-btn" data-target="blogs">blog.log</a></li>
         </ul>
     </nav>
   </header>
   <main id="site-content">
     <section id="home" class="page-content hidden">
+        <p class="cmd">neofetch</p>
         <div class="main-hero">
+            <div class="avatar-section">
+                <img src="assets/images/my-avatar.png" alt="Callistus Image">
+            </div>
             <div class="texts">
                 <h4>HELLO, WORLD.</h4>
                 <h2>I'm Callistus Nwachukwu.</h2>
                 <p>SOFTWARE ENGINEER | TECH-PRENEUR | FULL STACK DEVELOPER</p>
-            </div>
-            <div class="avatar-section">
-                <img src="assets/images/my-avatar.png" alt="Callistus Image">
+                <dl class="kv">
+                    <dt>company</dt><dd>Callismart Tech</dd>
+                    <dt>stack</dt><dd>PHP, JavaScript, MySQL, WordPress, WooCommerce</dd>
+                    <dt>infra</dt><dd>Cloudflare Workers &amp; Pages, DNS</dd>
+                    <dt>building</dt><dd>Smart License Server</dd>
+                    <dt>shipping</dt><dd>Smart Woo Service Invoicing</dd>
+                    <dt>location</dt><dd>Lagos State, Nigeria</dd>
+                </dl>
             </div>
         </div>
-        <a class="button" id="about-me-nav" href="about/" data-link data-target="about">MORE ABOUT ME</a>
+        <a class="button" id="about-me-nav" href="about/" data-link data-target="about">cat about.md</a>
     </section>
 
     <section id="about" class="page-content hidden">
+        <p class="cmd">cat about.md</p>
         <h5>About Me</h5>
         <h2>Let me introduce myself</h2>
         <div class="about-me">
@@ -80,7 +87,7 @@
                 <p>
                     My core competencies include PHP, JavaScript, HTML5, CSS, and MySQL. 
                     I specialize in WordPress development, including custom plugins and themes, headless CMS implementations, and advanced REST API integrations.
-                    I also have a strong background in cloud deployments, leveraging technologies like Cloudflare Workers and Pages, and managing complex DNS infrastructure.
+                    I also have a strong background in cloud deployments, leveraging technologies like Cloudflare Workers and Pages, and managing complex DNS infrastructure. On the backend I design database-agnostic systems that run on MySQL, MariaDB, PostgreSQL and SQLite.
                 </p>
                 <div class="skill-section">
                     <h3>My Technical Skills</h3>
@@ -139,7 +146,7 @@
                 <p>
                     My mission is to build innovative solutions that help small and medium-sized businesses increase profitability by automating time-consuming tasks.
                     To support this vision, I developed the <strong><a href="http://wordpress.org/plugins/smart-woo-service-invoicing/" target="_blank" rel="noopener noreferrer">Smart Woo Service Invoicing</a></strong> plugin — a WooCommerce® extension that transforms a WordPress® site into a powerful service subscription and invoicing engine.
-                    I also maintain several other plugins and themes available on WordPress.org.
+                    I also maintain several other plugins and themes available on WordPress.org. My current main project is <strong><a href="https://github.com/CallismartLtd/smart-license-server" target="_blank" rel="noopener noreferrer">Smart License Server</a></strong>, together with the open-source PHP libraries it is built on.
                 </p>
                 <p><strong>FULL NAME</strong>: <br><em>Callistus Nwachukwu</em></p>
                 <p><strong>DATE OF BIRTH</strong>: <br><em><time datetime="199*-03-30">March 30, 199*</time></em></p>
@@ -167,6 +174,9 @@
                 <p>
                     Today, I serve as the CEO of <a href="https://callismart.com.ng" target="_blank">Callismart Tech</a>, where I lead the development of powerful WordPress plugins, custom web applications, and SaaS platforms that empower small and medium-sized businesses. I’m proud to have authored several tools available on the WordPress Plugin Repository, and I continue to build solutions that make complex tasks simpler and businesses more efficient.
                 </p>
+                <p>
+                    My main project today is <strong><a href="https://github.com/CallismartLtd/smart-license-server" target="_blank" rel="noopener noreferrer">Smart License Server</a></strong> — a database-agnostic PHP application for privately hosting, licensing, updating and distributing software, WordPress plugins and themes. It started as a WordPress plugin and now runs as a WordPress plugin, a standalone web app and a CLI from one codebase. Along the way I extracted its foundations as Composer packages: DBPrism, Callismart HTTP and Callismart DTO.
+                </p>
             </div>
 
             <div class="my-motivation">
@@ -184,6 +194,7 @@
     </section>
 
     <section id="resume" class="page-content hidden">
+        <p class="cmd">git log --career</p>
         <h5><i class="fa fa-graduation-cap"></i> My Resume</h5>
         <div class="my-resume">
             <h2>My Professional Timeline</h2>
@@ -272,6 +283,39 @@
                     </div>
                 </div>
 
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fa fa-key"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Creator &amp; Lead Developer – Smart License Server</h3>
+                        <p>Architect, Core Developer – Ongoing</p>
+                        <p class="client-company-name">Callismart Tech</p>
+                        <div class="timeline-content-body">
+                        <p>
+                            I architect and build Smart License Server, a PHP application for privately hosting, licensing, updating and distributing software, WordPress plugins and themes. It began as a WordPress plugin and now runs as a WordPress plugin, a standalone web app and a CLI from one codebase, on MySQL, MariaDB, PostgreSQL or SQLite.
+                        </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fa fa-box"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Author &amp; Maintainer – Callismart PHP Libraries</h3>
+                        <p>Open Source – Ongoing</p>
+                        <p class="client-company-name">GitHub &amp; Packagist</p>
+                        <div class="timeline-content-body">
+                        <p>
+                            I extracted the foundations of the platform into standalone Composer packages: DBPrism (database abstraction), Callismart HTTP (multi-adapter HTTP client) and Callismart DTO (data transfer objects).
+                        </p>
+                        </div>
+                    </div>
+                </div>
+
                 <h2><i class="fa fa-graduation-cap"></i> Education</h2>
                 <div class="timeline-item">
                     <div class="timeline-dot">
@@ -325,6 +369,7 @@
     </section>
 
     <section id="contact" class="page-content hidden">
+        <p class="cmd">./contact.sh</p>
         <h5><i class="fa fa-address-book"></i> Contact Me</h5>
         <h2>I'd Love To Hear From You</h2>
         <em>Please feel free to contact me. I check my emails regularly and will respond as soon as I get your email.</em>
@@ -368,12 +413,19 @@
     </section>
     
     <section id="projects" class="page-content hidden">
+        <p class="cmd">ls -la ~/projects</p>
         <h5><i class="fa fa-lightbulb"></i> My Projects</h5>
         <h2>What I've Been Working On</h2>
         <em>Here are some of the tools and products I've built — each solving a real problem.</em>
 
+        <h3>Platform, plugin and libraries</h3>
         <div class="projects-grid">
-            <!-- Smart Woo Service Invoicing -->
+            <div class="project-item">
+                <h3>Smart License Server</h3>
+                <em><strong>Type:</strong> PHP Application – WordPress Plugin, Standalone, CLI</em>
+                <p>A database-agnostic application for privately hosting, licensing, updating and distributing software, WordPress plugins and themes. It includes a client dashboard with two-factor authentication, role-based access, organizations, a background job queue and a versioned REST API, and runs on MySQL, MariaDB, PostgreSQL or SQLite.</p>
+                <p><a href="https://github.com/CallismartLtd/smart-license-server" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
+            </div>
             <div class="project-item">
                 <h3>Smart Woo Service Invoicing</h3>
                 <em><strong>Type:</strong> WooCommerce Extension</em>
@@ -382,28 +434,54 @@
                 </p>
                 <a href="https://wordpress.org/plugins/smart-woo-service-invoicing/" class="button nav-button" target="_blank">View</a>
             </div>
-
-            <!-- Plugin Update Server -->
             <div class="project-item">
-                <h3>Smart License Server</h3>
-                <em><strong>Type:</strong> Internal API Project</em>
-                <p>
-                    A custom-built software update system for private WordPress plugins and themes. Built using the WordPress® REST API, it powers seamless version control, license validation, and update delivery for distributed software.
-                </p>
-                <p><a href="https://github.com/CallismartLtd/smart-license-server" class="button nav-button" target="_blank">View</a></p>
+                <h3>DBPrism</h3>
+                <em><strong>Type:</strong> Composer Library – PHP 8.1+</em>
+                <p>Write a query once and run it on MySQL, MariaDB, PostgreSQL or SQLite. An intent-based query builder, an optional database layer over native drivers and PDO, schema inspection and migrations — each part works on its own. <code>composer require callismart/dbprism</code></p>
+                <p><a href="https://github.com/CallismartLtd/DBPrism" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
             </div>
-
+            <div class="project-item">
+                <h3>Callismart HTTP</h3>
+                <em><strong>Type:</strong> Composer Library – PHP 8.1+</em>
+                <p>A lightweight HTTP client that falls back from cURL to fopen or sockets on restricted hosts, signs AWS requests with SigV4 without the AWS SDK, and streams large downloads straight to disk. <code>composer require callismart/http</code></p>
+                <p><a href="https://github.com/CallismartLtd/Http" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
+            </div>
+            <div class="project-item">
+                <h3>Callismart DTO</h3>
+                <em><strong>Type:</strong> Composer Library – PHP 8.1+</em>
+                <p>A dependency-free base class for type-safe data transfer objects: dynamic properties, type coercion, allowed-key validation and masking of sensitive values. <code>composer require callismart/dto</code></p>
+                <p><a href="https://github.com/CallismartLtd/CallismartDTO" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
+            </div>
+        </div>
+        <h3>Developer tools</h3>
+        <div class="projects-grid">
+            <div class="project-item">
+                <h3>APCu Dashboard</h3>
+                <em><strong>Type:</strong> Single-file PHP Tool</em>
+                <p>A dashboard for managing the APCu cache: live stats, a sortable entry table, Ajax delete and clear, and a built-in login with brute-force lockout. No Composer, npm or external requests.</p>
+                <p><a href="https://github.com/CallismartLtd/apcu-dashboard" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
+            </div>
+            <div class="project-item">
+                <h3>PHP Web Terminal</h3>
+                <em><strong>Type:</strong> PHP + xterm.js Tool</em>
+                <p>A small web terminal backed by a real PTY shell, with a class-based PHP controller and an xterm.js frontend. Remote access is denied by default and files can be uploaded into the shell's working directory.</p>
+                <p><a href="https://github.com/CallismartLtd/web-console" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
+            </div>
+            <div class="project-item">
+                <h3>Callismart Dev Manager</h3>
+                <em><strong>Type:</strong> GTK Desktop App – Debian / Ubuntu</em>
+                <p>Runs local PHP development sites on Apache: vhosts, per-site PHP-FPM or mod_php, and mkcert HTTPS. A thin front end over three command-line tools (<code>sitemgr</code>, <code>phpmgr</code>, <code>localssl</code>) that also work on their own.</p>
+                <p><a href="https://github.com/CallismartLtd/callismart-devmgr" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
+            </div>
             <div class="project-item">
                 <h3>Must-Use Plugin Loader</h3>
                 <em><strong>Type:</strong> WordPress Tool / Snippet</em>
-                <p>
-                    A lightweight PHP solution designed to streamline WordPress® Must-Use (MU) plugin management. It allows you to organize MU plugins into their own dedicated subdirectories, rather than requiring all files to be directly in the main `mu-plugins` folder.
-                </p>
-              
-                <a href="projects" class="button nav-button" data-link>Internal Tool</a>
+                <p>A single <code>load.php</code> that lets you keep each must-use plugin in its own subdirectory of <code>mu-plugins</code> instead of requiring every file to sit directly in the folder.</p>
+                <p><a href="https://github.com/CallismartLtd/must-use-plugins-loader" class="button nav-button" target="_blank" rel="noopener noreferrer">View</a></p>
             </div>
-
-            <!-- Email Hosting & Deliverability System -->
+        </div>
+        <h3>Client work and infrastructure</h3>
+        <div class="projects-grid">
             <div class="project-item">
                 <h3>Email Hosting & Deliverability System</h3>
                 <em><strong>Type:</strong> Internal Infrastructure</em>
@@ -413,8 +491,6 @@
         
                 <a href="contact" class="button nav-button" data-link>get in touch</a>
             </div>
-
-            <!-- PHP Email Client for Brevo® API -->
             <div class="project-item">
                 <h3>PHP Email Client for Brevo® API</h3>
                 <em><strong>Type:</strong> PHP Component / API Integration</em>
@@ -424,9 +500,6 @@
                 </p>
                 <a href="contact" class="button nav-button" data-link>get in touch</a>
             </div>
-
-
-            <!-- Location-Based Utility Framework -->
             <div class="project-item">
                 <h3>Location-Based Utility Framework</h3>
                 <em><strong>Type:</strong> PHP Component / Web App Integration</em>
@@ -436,8 +509,6 @@
                 </p>
                 <a href="contact" class="button nav-button" data-link>get in touch</a>
             </div>
-
-            <!-- Callismart Tech Website -->
             <div class="project-item">
                 <h3>Callismart Tech</h3>
                 <em><strong>Type:</strong> Company Website & Software Portal</em>
@@ -446,8 +517,6 @@
                 </p>
                 <a href="https://callismart.com.ng" class="button nav-button" target="_blank">Visit Site</a>
             </div>
-
-            <!-- GTK World -->
             <div class="project-item">
                 <h3>GTK World</h3>
                 <em><strong>Type:</strong> Beauty & Cosmetic Ecommerce Website</em>
@@ -456,8 +525,6 @@
                 </p>
                 <a href="https://gtkworld.com.ng" class="button nav-button" target="_blank">Visit Site</a>
             </div>
-
-            <!-- Qainoc Studios -->
             <div class="project-item">
                 <h3>Qainoc Studios</h3>
                 <em><strong>Type:</strong> Nollywood Production Company Website</em>
@@ -466,8 +533,6 @@
                 </p>
                 <a href="https://qainocstudios.com" class="button nav-button" target="_blank">Visit Site</a>
             </div>
-
-            <!-- New Covenant Altars -->
             <div class="project-item">
                 <h3>New Covenant Altars</h3>
                 <em><strong>Type:</strong> Church Website</em>
@@ -476,7 +541,6 @@
                 </p>
                 <a href="https://newcovenantaltars.com.ng" class="button nav-button" target="_blank">Visit Site</a>
             </div>
-
             <div class="project-item">
                 <h3>Personal Portfolio Website</h3>
                 <em><strong>Type:</strong> Full Stack / Branding</em>
@@ -485,7 +549,6 @@
                 </p>
                 <a href="/" class="button nav-button" data-link>You're on it 🤓</a>
             </div>
-
             <div class="project-item">
                 <h3>…And Many More</h3>
                 <p>
@@ -501,6 +564,7 @@
     </section>
 
     <section id="blogs" class="page-content hidden">
+        <p class="cmd">tail -n 6 blog.log</p>
         <h5><i class="fas fa-newspaper"></i> My Blog Posts</h5>
         <p>Articles I wrote</p>
         <em>Here you can explore the articles I've written</em>
@@ -531,15 +595,24 @@
 
     </section>
     <section id="not-found" class="page-content hidden">
+        <p class="cmd">cd /nowhere</p>
         <div class="not-found-wrapper">
             <h1>404</h1>
-            <h2>Page Not Found</h2>
+            <h2>bash: cd: /nowhere: no such route</h2>
             <p>Sorry, the page you're looking for doesn't exist or may have been moved.</p>
             <a href="/" class="button" data-link data-target="home">
-                <i class="fas fa-home"></i> Back to Homepage
+                cd ~
             </a>
         </div>
     </section>
   </main>
+<form id="shell" autocomplete="off" aria-label="Command prompt">
+    <div id="shell-out" role="log" aria-live="polite" tabindex="0" hidden></div>
+    <div class="row">
+        <label for="shell-input"><span class="sr-only">Command prompt. Type help to list commands. </span><span aria-hidden="true">callistus:<span class="route-path">~/</span>$</span></label>
+        <input id="shell-input" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="type help, then press enter">
+    </div>
+</form>
+<footer id="statusbar"><span>-- NORMAL --</span><span class="route-path">~/</span><span>utf-8 | Lagos, NG</span></footer>
 </body>
 </html>

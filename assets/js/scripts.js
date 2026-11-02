@@ -4,6 +4,8 @@
 class CallistusPortfolio {
     #baseUrl    = app_vars.url;
     #loaded     = false;
+    typedCommand = null;
+    #hashMode   = ! window.location.href.startsWith( app_vars.url );
 
     /**
      * Defines the routes for the Single Page Application.
@@ -250,10 +252,162 @@ class CallistusPortfolio {
             console.error('Blog fetch error:', err);
         });
 
+        this.initShell();
         this.handleLocation();
         window.addEventListener( 'popstate', () => this.handleLocation() );
         this.#loaded = true;
         
+    }
+
+    /**
+     * Sets up the interactive prompt at the bottom of the window.
+     * Commands only open an existing route or print text, so the menu
+     * links stay the primary way to move around.
+     */
+    initShell() {
+        const form      = document.querySelector( '#shell' );
+        const input     = form.querySelector( '#shell-input' );
+        const output    = form.querySelector( '#shell-out' );
+        const routes    = { home: '', about: 'about', resume: 'resume', contact: 'contact', projects: 'projects', blogs: 'blogs' };
+        const files     = { home: '~/', about: 'about.md', resume: 'resume.md', contact: 'contact.sh', projects: 'projects/', blogs: 'blog.log' };
+        const aliases   = { '': 'home', '~': 'home', blog: 'blogs', cv: 'resume', work: 'projects' };
+        const commands  = {
+            help: 'list the commands',
+            ls: 'list the pages',
+            cd: 'cd <page>  open a page',
+            cat: 'cat <page>  open a page',
+            open: 'open <page>  open a page',
+            whoami: 'who built this site',
+            clear: 'clear this output',
+            exit: 'back to the home page'
+        };
+        const entries   = [];
+        let cursor      = 0;
+
+        const line = ( text, className ) => {
+            const p = document.createElement( 'p' );
+            p.textContent = text;
+            if ( className ) {
+                p.className = className;
+            }
+            return p;
+        };
+
+        const print = ( ...nodes ) => {
+            output.replaceChildren( ...nodes );
+            output.hidden = ! nodes.length;
+        };
+
+        const resolve = ( token = '' ) => {
+            let name = token.toLowerCase().replace( /^(\.\/|~\/)/, '' ).replace( /\/$/, '' ).replace( /\.(md|sh|log)$/, '' );
+            name = Object.keys( aliases ).includes( name ) ? aliases[name] : name;
+            return Object.keys( routes ).includes( name ) ? name : null;
+        };
+
+        const open = ( name, typed ) => {
+            this.typedCommand = typed;
+            this.navigate( routes[name] );
+            print( line( `opened ${ files[name] }` ) );
+        };
+
+        const run = ( raw ) => {
+            const [ cmd = '', arg ] = raw.trim().split( /\s+/ );
+            const name = cmd.toLowerCase();
+            const navigating = [ 'cd', 'cat', 'open' ].includes( name );
+            const typed = raw.trim().replace( /\s+/g, ' ' ).slice( 0, 60 );
+
+            if ( ! name ) {
+                return;
+            }
+
+            if ( 'help' === name ) {
+                const list = document.createElement( 'dl' );
+                list.className = 'kv';
+                Object.entries( commands ).forEach( ( [ key, text ] ) => {
+                    const dt = document.createElement( 'dt' );
+                    const dd = document.createElement( 'dd' );
+                    dt.textContent = key;
+                    dd.textContent = text.replace( key, '' ).trim() || text;
+                    list.append( dt, dd );
+                } );
+                print( list, line( 'Pages: ' + Object.values( files ).join( '  ' ) + '. You can also type a page name on its own. Tab completes, up and down recall history, / focuses this prompt.' ) );
+            } else if ( 'ls' === name ) {
+                const p = document.createElement( 'p' );
+                Object.entries( files ).forEach( ( [ key, label ] ) => {
+                    const a = document.createElement( 'a' );
+                    a.href = routes[key];
+                    a.textContent = label;
+                    a.setAttribute( 'data-link', '' );
+                    p.append( a, ' ' );
+                } );
+                print( p );
+            } else if ( 'clear' === name ) {
+                print();
+            } else if ( 'whoami' === name ) {
+                print( line( 'callistus: software engineer in Lagos State, building Smart License Server at Callismart Tech.' ) );
+            } else if ( 'exit' === name ) {
+                open( 'home', typed );
+            } else if ( navigating && 'cd' !== name && ! arg ) {
+                print( line( `usage: ${ name } <page>. Try ls.`, 'err' ) );
+            } else if ( navigating ) {
+                const target = resolve( arg );
+                target ? open( target, typed ) : print( line( `${ name }: ${ arg }: no such page. Try ls.`, 'err' ) );
+            } else if ( null !== resolve( cmd ) ) {
+                open( resolve( cmd ), typed );
+            } else {
+                print( line( `${ cmd }: command not found. Type help.`, 'err' ) );
+            }
+        };
+
+        const complete = () => {
+            const parts = input.value.split( /\s+/ );
+            const last  = parts.pop().toLowerCase();
+            const pool  = parts.length ? Object.values( files ) : [ ...Object.keys( commands ), ...Object.values( files ) ];
+            const hits  = pool.filter( item => item.startsWith( last ) );
+
+            if ( 1 === hits.length ) {
+                input.value = [ ...parts, hits[0] ].join( ' ' ) + ' ';
+            } else if ( hits.length > 1 ) {
+                print( line( hits.join( '  ' ) ) );
+            }
+        };
+
+        form.addEventListener( 'submit', ( e ) => {
+            e.preventDefault();
+            const value = input.value;
+
+            if ( value.trim() ) {
+                entries.push( value );
+            }
+
+            cursor = entries.length;
+            input.value = '';
+            run( value );
+        } );
+
+        input.addEventListener( 'keydown', ( e ) => {
+            if ( 'ArrowUp' === e.key ) {
+                e.preventDefault();
+                cursor = Math.max( cursor - 1, 0 );
+                input.value = entries[cursor] ?? '';
+            } else if ( 'ArrowDown' === e.key ) {
+                e.preventDefault();
+                cursor = Math.min( cursor + 1, entries.length );
+                input.value = entries[cursor] ?? '';
+            } else if ( 'Tab' === e.key && ! e.shiftKey && input.value.trim() ) {
+                e.preventDefault();
+                complete();
+            } else if ( 'Escape' === e.key ) {
+                print();
+            }
+        } );
+
+        document.addEventListener( 'keydown', ( e ) => {
+            if ( '/' === e.key && ! e.metaKey && ! e.ctrlKey && ! e.target.closest( 'input, textarea' ) ) {
+                e.preventDefault();
+                input.focus();
+            }
+        } );
     }
 
     /**
@@ -262,16 +416,11 @@ class CallistusPortfolio {
      */
     toggleMenu () {
         let menuToggle  = document.querySelector( '#hamburger-toggle' );
-        const icon      = menuToggle.querySelector( 'i.fas' );
         const menuNav   = document.querySelector( 'nav' );
-        
-        if ( icon.classList.contains( 'fa-bars' ) ) {
-            icon.classList.replace( 'fa-bars', 'fa-x');
-        } else if ( icon.classList.contains( 'fa-x' ) ) {
-            icon.classList.replace( 'fa-x', 'fa-bars')
-        }
- 
-        menuNav.classList.toggle( 'vissible' );            
+        const isOpen    = menuNav.classList.toggle( 'vissible' );
+
+        menuToggle.setAttribute( 'aria-expanded', isOpen );
+        menuToggle.firstElementChild.textContent = isOpen ? '[×]' : '[≡]';
     }
 
     getBaseURl() {
@@ -285,6 +434,10 @@ class CallistusPortfolio {
     }
     
     getQueriedPath() {        
+        if ( this.#hashMode ) {
+            return window.location.hash.replace( '#', '' );
+        }
+
         if ( ! this.getCurrentUrl().startsWith( this.getBaseURl() ) ) {
             return '';
         }
@@ -299,6 +452,12 @@ class CallistusPortfolio {
      * @param {string} path The new URL path to navigate to.
      */
     navigate ( path ) {
+        if ( this.#hashMode ) {
+            window.location.hash = path.replace( '/', '' );
+            this.handleLocation();
+            return;
+        }
+
         history.pushState({}, '', app_vars.url + path.replace( '/', '' ) );
         this.handleLocation();
     };
@@ -331,7 +490,26 @@ class CallistusPortfolio {
         
         }
 
+        document.querySelectorAll( '.cmd' ).forEach( ( cmd ) => {
+            if ( undefined === cmd.dataset.default ) {
+                cmd.dataset.default = cmd.textContent;
+            }
+
+            cmd.textContent = cmd.dataset.default;
+        } );
+
+        const shownCmd = targetSection ? targetSection.querySelector( '.cmd' ) : null;
+
+        if ( this.typedCommand && shownCmd ) {
+            shownCmd.textContent = this.typedCommand;
+        }
+
+        this.typedCommand = null;
         document.title = routeConfig.title;
+        document.querySelectorAll( '.route-path' ).forEach( ( el ) => {
+            el.textContent = `~/${ path }`;
+        } );
+
         const navButtons = document.querySelectorAll( '.app-nav-list li' );
 
         navButtons.forEach( button => {
